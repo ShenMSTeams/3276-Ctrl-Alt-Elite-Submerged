@@ -188,7 +188,8 @@ async def red_2():
     """
     await straight(420) 
     await turn(-95)
-    await straight(400)
+    await straight(330)
+    await straight(70)
     await turn(-10)
     await straight(40)
     await straight (-70)
