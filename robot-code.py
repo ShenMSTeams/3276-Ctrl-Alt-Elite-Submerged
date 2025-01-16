@@ -162,7 +162,6 @@ async def red_1_test():
     await turn(90)
     await straight(500)
     
-
 async def red_1():
     """or
     shark tag nursery water sample 
@@ -170,11 +169,11 @@ async def red_1():
     await straight(400)
     await turn(-25, velocity=50)
     await straight(350)
-    await turn(115)
-    await straight(190, acceleration= 1000, velocity= 1200)
+    await turn(121)
+    await straight(200, acceleration= 1000, velocity= 1200)
     #arrived at coral on to shark
     await straight(-90)
-    await turn(-45)
+    await turn(-40)
     await straight(220)
     #hit shark and return to base
     await straight(-200)
@@ -216,20 +215,21 @@ async def blue_6 ():
     """
     drop octopus off do angler fish
     """
-    await straight (30)
-    await turn (45)
-    await straight (800)
-    await turn (-45)  
+    await straight (110)
+    await turn (50, velocity=50)
+    await straight_gyro (600)
+    await turn (-50)
+    await straight(80)
+    await straight(-60)
+    await turn(48)
     #octopus dropped off
-    await straight (-90)
-    await turn (46)
-    await straight (250)
-    await turn (30)
-    await turn (-30)
+    await straight_gyro (260)
+    await turn(35)
+    await turn(-30)
     #angler fish done
-    await straight (-400)
+    await straight_gyro (-380)
     await turn (30)
-    await straight (-600, velocity=1200)
+    await straight_gyro (-1000, velocity=1200)
 
 
 async def blue_7 ():
@@ -257,5 +257,7 @@ async def main():
     #await blue_5() 
     await blue_6 ()
     #await blue_7 ()
+   
+
 
 runloop.run(main())
