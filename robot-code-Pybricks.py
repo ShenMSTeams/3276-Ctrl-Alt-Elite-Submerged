@@ -27,21 +27,20 @@ def reset_drive():
 
 async def red_1():
     """
-    shark, coral nursery, water sample, scuba divert, coeal reef
+    shark, coral nursery, water sample, scuba diver, coral reef
     """
     #await robot.straight(400)
-    #return=
+    #return
     await arm_motor.run_target (target_angle=90, speed=300)
     print("red 1")
     #hits water sample
-    await robot.straight(480)
+    await robot.straight(500)
     #turns to go to go to seabed sample
-    robot.settings(turn_rate=50)
-    await robot.turn(47)
-    await arm_motor.run_target (target_angle=0, speed=300)
-    reset_drive()
+    robot.settings(turn_acceleration=200, straight_acceleration=400)
+    await robot.turn(45)
+    await arm_motor.run_target (target_angle=-5, speed=300)
     #go straight to seabed sample
-    await robot.straight(575) 
+    await robot.straight(565) 
     #arrived at sample getting ready to lift
     await arm_motor.run_target (target_angle=30, speed=300)
     #lifted up sample
@@ -51,13 +50,13 @@ async def red_1():
     await robot.straight(-40)
     await arm_motor.run_target (target_angle=0, speed=300)
     await robot.turn(-30)
-    await robot.straight(-350)
+    await robot.straight(-240)
     await robot.turn(-135)
 
     robot.settings(straight_acceleration=1000, straight_speed=300)
-    await arm_motor.run_target (target_angle=15, speed=300)
+    await arm_motor.run_target (target_angle=14, speed=300)
     #pushing in the coral buds 
-    await robot.straight(180)
+    await robot.straight(250)
     reset_drive()
 
     #lift the scuba diver
@@ -71,48 +70,52 @@ async def red_1():
     await robot.turn (90)
     reset_drive()
     #delivering scuba diver
-    await robot.straight(50)
+    await arm_motor.run_target (target_angle=20, speed=300)
+    await robot.straight(30)
     await arm_motor.run_target (target_angle=12, speed=300)
-    await robot.straight(-80)
+    await robot.straight(-60)
     #released scuba diver
     await arm_motor.run_target(target_angle=-5, speed=300)
     await robot.straight(80)
     #flipping coral
-    await robot.turn(7)
+    #await robot.turn(7)
     await arm_motor.run_target(target_angle=-45, speed=300)
     await wait(500)
     await arm_motor.run_target(target_angle=-10, speed=300)
-    await robot.turn(-7)
+    #await robot.turn(-7)
     #backing away from coral and alinging for raise the mast
-    await robot.straight(-40)
-    await robot.turn(45)
-    await robot.straight(-50)
+    await robot.straight(-70)
+    
+    #await robot.turn(45)
+    #await robot.straight(-80)
     #dropping arm to hook onto ship 
-    await arm_motor.run_target(target_angle=-30, speed=300)
-    await robot.turn(45)
+    #await arm_motor.run_target(target_angle=-30, speed=300)
+    #await robot.turn(45)
     # raise the mast
-    await robot.straight(100)
+    #await robot.straight(100)
 
-    await arm_motor.run_target(target_angle=30, speed=100)
-    await robot.straight(-170)
-    await arm_motor.run_target(target_angle=10, speed=300)
+    #await arm_motor.run_target(target_angle=30, speed=100)
+    #await robot.straight(-150)
+    #await arm_motor.run_target(target_angle=10, speed=300)
     #turns to get shark
-    await robot.turn(-45)
     await arm_motor.run_target(target_angle=90, speed=300)
-    await robot.turn(-90)
+    await robot.turn(-55)
+    
     
 
     
     #await robot.turn(-45)
     #await arm_motor.run_target(target_angle=90, speed=300)
+    robot.settings(straight_acceleration=1000, straight_speed=300)
     await robot.straight(300)
+    reset_drive()
     #hit shark and return to base
 
     await robot.straight(-200)
-    await robot.turn(-120)
+    await robot.turn(-110)
     
     robot.settings(straight_speed=500)
-    await robot.straight(700)
+    await robot.straight(650)
     reset_drive()
     await arm_mortar.run_target(target_angle=-45)
 
@@ -121,7 +124,10 @@ async def zero_arm():
     calibrating the arm attachment
     '''
     await arm_motor.run_until_stalled(speed=300, duty_limit=30)
+    #Calibrated for Elite
     arm_motor.reset_angle(120)
+    #Calibrated for Alt
+    #arm_motor.reset_angle(118)
     await arm_motor.run_target (target_angle=90, speed=300)
     return
     
@@ -129,10 +135,10 @@ async def red_2():
     """
     raise the mast going to blue base
     """ 
-    await zero_arm()
+    #await zero_arm()
     #trapping the shark
     await arm_motor.run_target(target_angle=-45, speed=300)
-    await wait(1500)
+    #await wait(1500)
     #raise the mast
     await robot.straight(400) 
     robot.settings(turn_rate=70,straight_speed=200)
@@ -145,34 +151,36 @@ async def red_2():
     await robot.turn(45)
     await robot.straight(250)
     await robot.turn(-115)
-    await robot.straight(30)
-    await arm_motor.run_target(target_angle=90, speed=300)
+    await arm_motor.run_target(target_angle=0, speed=300)
     await robot.straight(-90)
     await arm_motor.run_target(target_angle=-45,speed=300)
-    await robot.straight(100)
+    await robot.straight(130)
+    await arm_motor.run_target(target_angle=-25,speed=300)
     await robot.straight(-90)
     #pulling the trident out
-    await arm_motor.run_target(target_angle=90, speed=300)
-    await robot.turn(-10)
-    await robot.straight(110)
-   # await robot.straight(-60)
+    await arm_motor.run_target(target_angle=45, speed=300)
+    await robot.turn(-25)
+    await robot.straight(130)
+   #await robot.straight(-60)
     #await robot.turn(-45)
     await arm_motor.run_target (target_angle=0, speed=300)
     robot.settings(straight_speed=900,straight_acceleration=1550)
-    await robot.straight(-130)
+    await robot.straight(-120)
     reset_drive()
-    await robot.straight(60)
+    await arm_motor.run_target (target_angle=90, speed=300)
+    #await robot.straight(100)
+
 
     #await robot.turn(45)
     #await robot.straight(150)
     #await robot.turn(-60)
 
     #heading to blue base
-    await robot.turn(85)
+    await robot.turn(75)
     robot.settings(straight_speed=500)
-    await robot.straight(950)
-    await robot.turn(45)
-    await robot.straight(100)
+    await robot.straight(400)
+    await robot.turn(50)
+    await robot.straight(700)
     reset_drive()
 
 async def red_3():
@@ -200,6 +208,13 @@ async def red_3():
     await robot.straight (270)
     await robot.curve(90, 180)
 
+async def blue_4():
+    '''
+    set arm for next run
+    '''
+    await zero_arm()
+    await arm_motor.run_target (target_angle=-45, speed=500)
+
 
 async def blue_5():
     """
@@ -222,7 +237,7 @@ async def blue_6 ():
     """
     drop octopus off do angler fish
     """
-    await zero_arm()
+    #await zero_arm()
     # trapping the unknown creature
     await arm_motor.run_target(target_angle=-45, speed=300)
     #moving to deliver the unexpected
@@ -234,23 +249,26 @@ async def blue_6 ():
 
     await robot.straight(620)
     await robot.turn(50)
-    await robot.straight(120)
+    await robot.straight(80)
 
-    await arm_motor.run_target(target_angle=0, speed=300)
-    await robot.straight(-70)
-    await robot.turn(-50)
-
+    await arm_motor.run_target(target_angle=20, speed=300)
+    await robot.straight(-30)
+    await robot.turn(-65)
     await arm_motor.run_target(target_angle=-45, speed=300)
     #octopus dropped off
     await robot.straight(160)
-    await robot.turn(-35)
-    await robot.turn(35)
+    await arm_motor.run_target (target_angle=90, speed=300)
+    await robot.turn (10)
+    #await robot.turn(-35)
+    #await robot.turn(35)
     #angler fish done now back to base
     #await robot.straight(-380)
     #await robot.turn(-30)
 
     robot.settings(straight_speed=500)
-    await robot.straight(-600)
+    await robot.straight(-500)
+    await robot.turn (-15)
+    await robot.straight (-450)
     reset_drive()
 
 
@@ -261,14 +279,19 @@ async def blue_7 ():
     await arm_motor.run_target(target_angle=-45,speed=300) 
     await robot.curve(radius=2800, angle=-10)
     await robot.turn(60)
-    await robot.straight(25)
-    await arm_motor.run_target(target_angle=15, speed=300)
-    await robot.turn(40)
-    await robot.turn(-135)
+    await robot.straight(40)
+    await robot.straight(-30)
+    await arm_motor.run_target(target_angle=30, speed=500)
+    await robot.turn(46)
+    reset_drive()
+    await robot.turn(-145)
     await arm_motor.run_target(target_angle=-10, speed=300)
     #await robot.straight(430)
     #await robot.turn(-45)
-    await robot.straight(620)
+    robot.straight(530)
+    await zero_arm()
+    await arm_motor.run_target (target_angle=-5, speed=300)
+    await robot.straight(100)
     await arm_motor.run_target(target_angle=35, speed=300)
     await wait (2000)
     await arm_motor.run_target(target_angle=0, speed=300)
@@ -380,6 +403,7 @@ async def calibrate_arm():
 runs = {"1" : red_1, 
         "2" : red_2,
         "3" : red_3,
+        "4" : blue_4,
         "5" : blue_5,
         "6" : blue_6,
         "7" : blue_7,
